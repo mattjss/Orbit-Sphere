@@ -1,0 +1,40 @@
+{
+  "name": "3d-particle-sphere-visualizer",
+  "version": "1.0.0",
+  "description": "A Three.js web application that creates an interactive 3D particle sphere visualizer inspired by Perplexity AI Voice Mode",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "threejs",
+    "3d",
+    "particles",
+    "visualization",
+    "webgl",
+    "interactive",
+    "morphing",
+    "animation"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/3d-particle-sphere-visualizer.git"
+  },
+  "dependencies": {
+    "three": "^0.128.0",
+    "tweakpane": "^3.0.8"
+  },
+  "devDependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

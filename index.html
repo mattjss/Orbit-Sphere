@@ -209,36 +209,7 @@
             box-shadow: 0 2px 8px rgba(79, 195, 247, 0.4);
         }
         
-        .preset-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 16px;
-        }
-        
-        .preset-button {
-            background: rgba(79, 195, 247, 0.1);
-            border: 1px solid rgba(79, 195, 247, 0.3);
-            color: #4fc3f7;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .preset-button:hover {
-            background: rgba(79, 195, 247, 0.2);
-            border-color: rgba(79, 195, 247, 0.5);
-            transform: translateY(-1px);
-        }
-        
-        .preset-button.active {
-            background: #4fc3f7;
-            color: white;
-            border-color: #4fc3f7;
-        }
+
         
         .fps-display {
             background: rgba(79, 195, 247, 0.1);
@@ -365,64 +336,9 @@
                 </div>
             </div>
             
-            <!-- Lightspeed Effect Controls -->
-            <div class="control-group">
-                <div class="control-group-title">Lightspeed Effect</div>
-                <div class="control-item">
-                    <label class="control-label">Streak Length</label>
-                    <div class="slider-container">
-                        <input type="range" class="slider" id="streakLengthSlider" min="0" max="2" step="0.01" value="0.5">
-                    </div>
-                    <div class="control-value" id="streakLengthValue">0.50</div>
-                </div>
-                <div class="control-item">
-                    <label class="control-label">Streak Intensity</label>
-                    <div class="slider-container">
-                        <input type="range" class="slider" id="streakIntensitySlider" min="0" max="1" step="0.01" value="0.3">
-                    </div>
-                    <div class="control-value" id="streakIntensityValue">0.30</div>
-                </div>
-                <div class="control-item">
-                    <label class="control-label">Motion Blur</label>
-                    <div class="slider-container">
-                        <input type="range" class="slider" id="motionBlurSlider" min="0" max="1" step="0.01" value="0.2">
-                    </div>
-                    <div class="control-value" id="motionBlurValue">0.20</div>
-                </div>
-                <div class="control-item">
-                    <label class="control-label">Lightspeed Zoom</label>
-                    <div class="slider-container">
-                        <input type="range" class="slider" id="lightspeedZoomSlider" min="0" max="1" step="0.01" value="0">
-                    </div>
-                    <div class="control-value" id="lightspeedZoomValue">0.00</div>
-                </div>
-            </div>
+
             
-            <!-- Preset Buttons -->
-            <div class="control-group">
-                <div class="control-group-title">Presets</div>
-                <div class="preset-buttons">
-                    <button class="preset-button" id="metallicBtn">Metallic</button>
-                    <button class="preset-button" id="glassBtn">Glass</button>
-                    <button class="preset-button" id="lightspeedBtn">Lightspeed</button>
-                    <button class="preset-button" id="clusteredBtn">Clustered</button>
-                </div>
-            </div>
-            
-            <!-- Shape Buttons -->
-            <div class="control-group">
-                <div class="control-group-title">Shapes</div>
-                <div class="preset-buttons">
-                    <button class="preset-button" id="smileyBtn">😊 Smiley</button>
-                    <button class="preset-button" id="thumbsBtn">👍 Thumbs</button>
-                    <button class="preset-button" id="ringBtn">💍 Ring</button>
-                </div>
-                <div class="shape-options" style="margin-top: 10px;">
-                    <label style="font-size: 12px; color: rgba(255, 255, 255, 0.7);">
-                        <input type="checkbox" id="outlineMode" style="margin-right: 5px;"> Outline Mode
-                    </label>
-                </div>
-            </div>
+
             
         </div>
     </div>

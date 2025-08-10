@@ -85,9 +85,6 @@ function setupControlPanel() {
     setupMaterialControls();
     setupParticleControls();
     setupMorphingControls();
-    setupLightspeedControls();
-    setupPresetButtons();
-    setupShapeButtons();
 }
 
 /**
@@ -173,58 +170,7 @@ function setupParticleControls() {
     });
 }
 
-/**
- * Setup lightspeed effect controls
- */
-function setupLightspeedControls() {
-    // Streak length slider
-    const streakLengthSlider = document.getElementById('streakLengthSlider');
-    const streakLengthValue = document.getElementById('streakLengthValue');
-    
-    streakLengthSlider.addEventListener('input', (e) => {
-        const value = parseFloat(e.target.value);
-        streakLengthValue.textContent = value.toFixed(2);
-        if (particleSphere && typeof particleSphere.setStreakLength === 'function') {
-            particleSphere.setStreakLength(value);
-        }
-    });
-    
-    // Streak intensity slider
-    const streakIntensitySlider = document.getElementById('streakIntensitySlider');
-    const streakIntensityValue = document.getElementById('streakIntensityValue');
-    
-    streakIntensitySlider.addEventListener('input', (e) => {
-        const value = parseFloat(e.target.value);
-        streakIntensityValue.textContent = value.toFixed(2);
-        if (particleSphere && typeof particleSphere.setStreakIntensity === 'function') {
-            particleSphere.setStreakIntensity(value);
-        }
-    });
-    
-    // Motion blur slider
-    const motionBlurSlider = document.getElementById('motionBlurSlider');
-    const motionBlurValue = document.getElementById('motionBlurValue');
-    
-    motionBlurSlider.addEventListener('input', (e) => {
-        const value = parseFloat(e.target.value);
-        motionBlurValue.textContent = value.toFixed(2);
-        if (particleSphere && typeof particleSphere.setMotionBlur === 'function') {
-            particleSphere.setMotionBlur(value);
-        }
-    });
-    
-    // Lightspeed zoom slider
-    const lightspeedZoomSlider = document.getElementById('lightspeedZoomSlider');
-    const lightspeedZoomValue = document.getElementById('lightspeedZoomValue');
-    
-    lightspeedZoomSlider.addEventListener('input', (e) => {
-        const value = parseFloat(e.target.value);
-        lightspeedZoomValue.textContent = value.toFixed(2);
-        if (particleSphere && typeof particleSphere.setLightspeedZoom === 'function') {
-            particleSphere.setLightspeedZoom(value);
-        }
-    });
-}
+
 
 /**
  * Setup morphing controls
@@ -255,134 +201,7 @@ function setupMorphingControls() {
     });
 }
 
-/**
- * Setup preset buttons with active state management
- */
-function setupPresetButtons() {
-    const metallicBtn = document.getElementById('metallicBtn');
-    const glassBtn = document.getElementById('glassBtn');
-    const lightspeedBtn = document.getElementById('lightspeedBtn');
-    const clusteredBtn = document.getElementById('clusteredBtn');
-    
-    // Remove active class from all buttons
-    function clearActiveButtons() {
-        [metallicBtn, glassBtn, lightspeedBtn, clusteredBtn].forEach(btn => {
-            btn.classList.remove('active');
-        });
-    }
-    
-    // Metallic preset
-    metallicBtn.addEventListener('click', () => {
-        clearActiveButtons();
-        metallicBtn.classList.add('active');
-        
-        if (particleSphere) {
-            // Set metallic material properties
-            particleSphere.updateMaterialProperties({
-                metalness: 0.9,
-                roughness: 0.1,
-                clearcoat: 0.8,
-                ior: 1.5
-            });
-            
-            // Update sliders
-            updateSliderValues({
-                metalness: 0.9,
-                roughness: 0.1,
-                clearcoat: 0.8,
-                ior: 1.5
-            });
-        }
-    });
-    
-    // Glass preset
-    glassBtn.addEventListener('click', () => {
-        clearActiveButtons();
-        glassBtn.classList.add('active');
-        
-        if (particleSphere) {
-            // Set glass material properties
-            particleSphere.updateMaterialProperties({
-                metalness: 0.0,
-                roughness: 0.0,
-                clearcoat: 1.0,
-                ior: 1.5
-            });
-            
-            // Update sliders
-            updateSliderValues({
-                metalness: 0.0,
-                roughness: 0.0,
-                clearcoat: 1.0,
-                ior: 1.5
-            });
-        }
-    });
-    
-    // Lightspeed preset
-    lightspeedBtn.addEventListener('click', () => {
-        clearActiveButtons();
-        lightspeedBtn.classList.add('active');
-        
-        if (particleSphere) {
-            // Set lightspeed material properties
-            particleSphere.updateMaterialProperties({
-                metalness: 0.0,
-                roughness: 0.0,
-                clearcoat: 1.0,
-                ior: 1.5
-            });
-            
-            // Set scatter for lightspeed effect
-            particleSphere.setScatterValue(0.8);
-            particleSphere.setClusterValue(0.2);
-            
-            // Set lightspeed effect parameters
-            particleSphere.setStreakLength(1.5);
-            particleSphere.setStreakIntensity(0.8);
-            particleSphere.setMotionBlur(0.6);
-            particleSphere.setLightspeedZoom(0.3);
-            
-            // Update all sliders
-            updateSliderValues({
-                metalness: 0.0,
-                roughness: 0.0,
-                clearcoat: 1.0,
-                ior: 1.5
-            });
-            
-            document.getElementById('scatterSlider').value = 0.8;
-            document.getElementById('clusterSlider').value = 0.2;
-            document.getElementById('scatterValue').textContent = '0.80';
-            document.getElementById('clusterValue').textContent = '0.20';
-            document.getElementById('streakLengthSlider').value = 1.5;
-            document.getElementById('streakIntensitySlider').value = 0.8;
-            document.getElementById('motionBlurSlider').value = 0.6;
-            document.getElementById('streakLengthValue').textContent = '1.50';
-            document.getElementById('streakIntensityValue').textContent = '0.80';
-            document.getElementById('motionBlurValue').textContent = '0.60';
-            document.getElementById('lightspeedZoomSlider').value = 0.3;
-            document.getElementById('lightspeedZoomValue').textContent = '0.30';
-        }
-    });
-    
-    // Clustered preset
-    clusteredBtn.addEventListener('click', () => {
-        clearActiveButtons();
-        clusteredBtn.classList.add('active');
-        
-        if (particleSphere) {
-            particleSphere.setScatterValue(0);
-            particleSphere.setClusterValue(1);
-            
-            // Update sliders
-            document.getElementById('scatterSlider').value = 0;
-            document.getElementById('clusterSlider').value = 1;
-            document.getElementById('scatterValue').textContent = '0.00';
-            document.getElementById('clusterValue').textContent = '1.00';
-        }
-    });
-}
+
 
 /**
  * Update slider values and display values
@@ -431,59 +250,7 @@ function startFpsCounter() {
     updateFPS();
 }
 
-/**
- * Setup shape buttons
- */
-function setupShapeButtons() {
-    const smileyBtn = document.getElementById('smileyBtn');
-    const thumbsBtn = document.getElementById('thumbsBtn');
-    const ringBtn = document.getElementById('ringBtn');
-    const outlineModeCheckbox = document.getElementById('outlineMode');
-    
-    // Remove active class from all shape buttons
-    function clearActiveShapeButtons() {
-        [smileyBtn, thumbsBtn, ringBtn].forEach(btn => {
-            btn.classList.remove('active');
-        });
-    }
-    
-    // Smiley face
-    smileyBtn.addEventListener('click', () => {
-        clearActiveShapeButtons();
-        smileyBtn.classList.add('active');
-        
-        if (particleSphere && typeof particleSphere.morphToShape === 'function') {
-            particleSphere.morphToShape('smiley');
-        }
-    });
-    
-    // Thumbs up
-    thumbsBtn.addEventListener('click', () => {
-        clearActiveShapeButtons();
-        thumbsBtn.classList.add('active');
-        
-        if (particleSphere && typeof particleSphere.morphToShape === 'function') {
-            particleSphere.morphToShape('thumbs');
-        }
-    });
-    
-    // Ring
-    ringBtn.addEventListener('click', () => {
-        clearActiveShapeButtons();
-        ringBtn.classList.add('active');
-        
-        if (particleSphere && typeof particleSphere.morphToShape === 'function') {
-            particleSphere.morphToShape('ring');
-        }
-    });
-    
-    // Outline mode checkbox
-    outlineModeCheckbox.addEventListener('change', (e) => {
-        if (particleSphere && typeof particleSphere.setOutlineMode === 'function') {
-            particleSphere.setOutlineMode(e.target.checked);
-        }
-    });
-}
+
 
 /**
  * Handle window resize

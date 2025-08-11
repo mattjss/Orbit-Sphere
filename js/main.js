@@ -82,64 +82,11 @@ function setupControlPanel() {
     });
     
     // Setup all slider controls
-    setupMaterialControls();
     setupParticleControls();
     setupMorphingControls();
 }
 
-/**
- * Setup material property controls
- */
-function setupMaterialControls() {
-    // Metalness slider
-    const metalnessSlider = document.getElementById('metalnessSlider');
-    const metalnessValue = document.getElementById('metalnessValue');
-    
-    metalnessSlider.addEventListener('input', (e) => {
-        const value = parseFloat(e.target.value);
-        metalnessValue.textContent = value.toFixed(2);
-        if (particleSphere && typeof particleSphere.updateMaterialProperties === 'function') {
-            particleSphere.updateMaterialProperties({ metalness: value });
-        }
-    });
-    
-    // Roughness slider
-    const roughnessSlider = document.getElementById('roughnessSlider');
-    const roughnessValue = document.getElementById('roughnessValue');
-    
-    roughnessSlider.addEventListener('input', (e) => {
-        const value = parseFloat(e.target.value);
-        roughnessValue.textContent = value.toFixed(2);
-        if (particleSphere && typeof particleSphere.updateMaterialProperties === 'function') {
-            particleSphere.updateMaterialProperties({ roughness: value });
-        }
-    });
-    
-    // Clearcoat slider
-    const clearcoatSlider = document.getElementById('clearcoatSlider');
-    const clearcoatValue = document.getElementById('clearcoatValue');
-    
-    clearcoatSlider.addEventListener('input', (e) => {
-        const value = parseFloat(e.target.value);
-        clearcoatValue.textContent = value.toFixed(2);
-        if (particleSphere && typeof particleSphere.updateMaterialProperties === 'function') {
-            particleSphere.updateMaterialProperties({ clearcoat: value });
-        }
-    });
-    
-    // IOR (Refraction Index) slider
-    const iorSlider = document.getElementById('iorSlider');
-    const iorValue = document.getElementById('iorValue');
-    
-    iorSlider.addEventListener('input', (e) => {
-        const value = parseFloat(e.target.value);
-        iorValue.textContent = value.toFixed(2);
-        if (particleSphere && typeof particleSphere.updateMaterialProperties === 'function') {
-            particleSphere.updateMaterialProperties({ ior: value });
-        }
-    });
-    
-}
+
 
 /**
  * Setup particle system controls
@@ -207,22 +154,7 @@ function setupMorphingControls() {
  * Update slider values and display values
  */
 function updateSliderValues(properties) {
-    if (properties.metalness !== undefined) {
-        document.getElementById('metalnessSlider').value = properties.metalness;
-        document.getElementById('metalnessValue').textContent = properties.metalness.toFixed(2);
-    }
-    if (properties.roughness !== undefined) {
-        document.getElementById('roughnessSlider').value = properties.roughness;
-        document.getElementById('roughnessValue').textContent = properties.roughness.toFixed(2);
-    }
-    if (properties.clearcoat !== undefined) {
-        document.getElementById('clearcoatSlider').value = properties.clearcoat;
-        document.getElementById('clearcoatValue').textContent = properties.clearcoat.toFixed(2);
-    }
-    if (properties.ior !== undefined) {
-        document.getElementById('iorSlider').value = properties.ior;
-        document.getElementById('iorValue').textContent = properties.ior.toFixed(2);
-    }
+    // Material properties removed from UI but shader effects remain active
 }
 
 /**
